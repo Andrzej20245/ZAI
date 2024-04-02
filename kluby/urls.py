@@ -16,9 +16,12 @@ Including another URLconf
 """
 
 from django.urls import path
-from kluby.views import wszystkie,szczegoly
+from kluby.views import wszystkie, szczegoly, nowy, edytuj, usun
 
 urlpatterns = [
-    path('wszystkie/', wszystkie),
-    path('szczegoly/<int:klub_id>/', szczegoly)
+    path('wszystkie/',wszystkie, name='wszystkie'),
+    path('szczegoly/<int:klub_id>/',szczegoly, name='szczegoly'),
+    path('nowy/', nowy, name='nowy'),
+    path('edytuj/<int:klub_id>/', edytuj, name='edytuj'),
+    path('usun/<int:klub_id>/', usun, name='usun')
 ]

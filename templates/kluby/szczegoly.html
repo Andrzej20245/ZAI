@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły klubu {{klub.nazwa}}</title>
+</head>
+<body>
+<h1>{{ klub.nazwa }}</h1>
+<ul>
+    <li>Miasto: {{ klub.miasto }}</li>
+    <li>Rok powstania klubu: {{ klub.rok_powstania }}</li>
+    <li>Opis klubu: {{ klub.opis }}</li>
+    {% if klub.extrainfo %}
+    <li>Dodatkowe informacje: {{ klub.extrainfo }} </li>
+    {% endif %}
+    {% for sezon in klub.sezon_set.all %}
+    <li>Okres od: {{ sezon.start }} do: {{ sezon.koniec }}, opinia: {{ sezon.opinia }}</li>
+    {% endfor %}
+    {% for zawodnik in klub.zawodnik_set.all %}
+    <li>Zawodnik: {{ zawodnik.imie }} {{ zawodnik.nazwisko }}, wiek: {{ zawodnik.wiek }} </li>
+    {% endfor %}
+
+</ul>
+
+<a href="/kluby/wszystkie/">Cofnij</a>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wszystkie kluby</title>
+</head>
+<body>
+
+<a href="/kluby/nowy/" >Nowy klub</a>
+
+{% if kluby %}
+    <ul>
+    {% for klub in kluby %}
+        <li><a href="/kluby/szczegoly/{{ klub.id }}/">{{ klub.nazwa }}</a></li>
+        <a href="/kluby/edytuj/{{ klub.id }}/" >Edytuj klub</a>
+        <a href="/kluby/usun/{{ klub.id }}/" >Usuń klub</a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Brak klubów w bazie danych.</p>
+{% endif %}
+</body>
+</html>
