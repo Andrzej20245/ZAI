@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Szczegóły klubu {{klub.nazwa}}</title>
-</head>
-<body>
+{% extends 'kluby/glowny.html' %}
+
+{% block tytul %} Szczegółowy widok wskazanego filmu w bazie {% endblock %}
+
+{% block strona %}
 <h1>{{ klub.nazwa }}</h1>
 <ul>
     <li>Miasto: {{ klub.miasto }}</li>
@@ -22,7 +20,6 @@
 
 </ul>
 
-<a href="/kluby/wszystkie/">Cofnij</a>
+<a href="{% url 'wszystkie' %}">Cofnij</a>
 
-</body>
-</html>
+{% endblock %}

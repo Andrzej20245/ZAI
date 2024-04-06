@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Usuwanie klubu {{klub.nazwa}}</title>
-</head>
-<body>
+{% extends 'kluby/glowny.html' %}
+
+{% block tytul %} Usuwanie wskazanych filmów z bazy {% endblock %}
+
+{% block strona %}
 <h1>Czy na pewno chcesz usunąć z bazy klub {{ klub.nazwa }} ?</h1>
 <form method="post">
     {% csrf_token %}
     <button type="submit">Usuń klub</button>
 </form>
 
-<a href="/kluby/wszystkie/">Cofnij</a>
+<a href="{% url 'wszystkie' %}">Cofnij</a>
 
-</body>
-</html>
+{% endblock %}

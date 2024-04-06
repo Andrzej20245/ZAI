@@ -1,12 +1,8 @@
-from django.shortcuts import render
-
-# Create your views here.
-
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Klub
 from .forms import KlubForm
-
+from django.http import HttpResponseRedirect
+from django.contrib.auth import logout
 
 def wszystkie(request):
     kluby=Klub.objects.all()
@@ -47,3 +43,7 @@ def usun(request, klub_id):
         klub.delete()
         return redirect(wszystkie)
     return render(request, 'kluby/usun.html', {'klub': klub})
+
+def logout_view(request):
+  logout(request)
+  return HttpResponseRedirect(reverse('login'))

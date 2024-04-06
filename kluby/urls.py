@@ -14,9 +14,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
-from django.urls import path
+from django.contrib import admin
+from django.urls import path, include
 from kluby.views import wszystkie, szczegoly, nowy, edytuj, usun
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('wszystkie/',wszystkie, name='wszystkie'),
@@ -24,4 +26,4 @@ urlpatterns = [
     path('nowy/', nowy, name='nowy'),
     path('edytuj/<int:klub_id>/', edytuj, name='edytuj'),
     path('usun/<int:klub_id>/', usun, name='usun')
-]
+] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)

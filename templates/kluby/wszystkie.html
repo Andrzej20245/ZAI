@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Wszystkie kluby</title>
-</head>
-<body>
+{% extends 'kluby/glowny.html' %}
 
-<a href="/kluby/nowy/" >Nowy klub</a>
+{% block tytul %} Lista wszystkich filmów w bazie {% endblock %}
+
+{% block strona %}
+
+<a href="{% url 'nowy' %}">Nowy film</a>
 
 {% if kluby %}
     <ul>
@@ -19,5 +17,4 @@
 {% else %}
     <p>Brak klubów w bazie danych.</p>
 {% endif %}
-</body>
-</html>
+{% endblock %}
