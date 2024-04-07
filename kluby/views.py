@@ -3,7 +3,7 @@ from .models import Klub
 from .forms import KlubForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth import logout
-
+from django.contrib.auth.decorators import login_required, permission_required
 def wszystkie(request):
     kluby=Klub.objects.all()
     context = {'kluby': kluby}
@@ -22,14 +22,16 @@ def szczegoly(request, klub_id):
         elif k == "zawodnik":
             field_names[i] = "zawodnik_set"
     return render(request, 'kluby/szczegoly.html', {'klub': klub, 'field_names': field_names})
-
+@login_required
+@permission_required("filmy.add_film")
 def nowy(request):
     form = KlubForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect(wszystkie)
     return render(request, 'kluby/nowy.html', {'form': form})
-
+@login_required
+@permission_required("filmy.change_film")
 def edytuj(request, klub_id):
     klub = get_object_or_404(Klub, pk=klub_id)
     form = KlubForm(request.POST or None, instance=klub)
@@ -37,6 +39,9 @@ def edytuj(request, klub_id):
         form.save()
         return redirect(wszystkie)
     return render(request, 'kluby/nowy.html', {'form':form})
+
+@login_required
+@permission_required("filmy.delete_film")
 def usun(request, klub_id):
     klub = get_object_or_404(Klub, pk=klub_id)
     if request.method=="POST":
