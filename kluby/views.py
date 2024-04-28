@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Klub, ExtraInfo, Zawodnik, Sezon
-from .forms import KlubForm, KlubFormNowy, ExtraInfoForm2, SezonForm2, ZawodnikForm2, ExtraInfoForm, SezonForm, ZawodnikForm
+from .forms import KlubForm, ExtraInfoFormWszystko, SezonFormWszystko, ZawodnikFormWszystko, ExtraInfoForm, SezonForm, ZawodnikForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required, permission_required
@@ -51,24 +51,13 @@ def usun(request, klub_id):
     return render(request, 'kluby/usun.html', {'klub': klub})
 
 
-
-
-@login_required
-@permission_required("kluby.add_klub")
-def nowszy_klub(request):
-    form = KlubFormNowy(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect(wszystkie)
-    return render(request, 'kluby/nowy.html', {'form': form})
-
 @login_required
 @permission_required("kluby.add_film")
-def nowy2(request):
+def nowy_wszystko(request):
     form = KlubForm(request.POST or None)
-    form_einfo = ExtraInfoForm2(request.POST or None)
-    form_sezon = SezonForm2(request.POST or None)
-    form_zawodnik = ZawodnikForm2(request.POST or None)
+    form_einfo = ExtraInfoFormWszystko(request.POST or None)
+    form_sezon = SezonFormWszystko(request.POST or None)
+    form_zawodnik = ZawodnikFormWszystko(request.POST or None)
 
     if all([form.is_valid(), form_einfo.is_valid(), form_sezon.is_valid(), form_zawodnik.is_valid()]):
         klub = form.save()
@@ -82,7 +71,7 @@ def nowy2(request):
         zawodnik.kluby.add(klub.id)
         zawodnik.save()
         return redirect(wszystkie)
-    return render(request, 'kluby/nowy2.html', {'form': form, 'form_einfo':form_einfo, 'form_sezon': form_sezon, 'form_zawodnik': form_zawodnik})
+    return render(request, 'kluby/nowy_wszystko.html', {'form': form, 'form_einfo':form_einfo, 'form_sezon': form_sezon, 'form_zawodnik': form_zawodnik})
 
 
 

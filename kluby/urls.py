@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from kluby.views import portal, wszystkie, szczegoly, nowy, edytuj, usun, nowszy_klub,nowy2,\
+from kluby.views import portal, wszystkie, szczegoly, nowy, edytuj, usun,nowy_wszystko,\
     extra_wszystkie, extra_szczegoly, extra_nowy, extra_edytuj,extra_usun, \
     sezon_wszystkie, sezon_szczegoly, sezon_nowy,sezon_edytuj,sezon_usun, \
     zawodnik_wszystkie, zawodnik_szczegoly, zawodnik_nowy, zawodnik_edytuj, zawodnik_usun
@@ -31,8 +31,7 @@ urlpatterns = [
     path('portal/klub_nowy/', nowy, name='nowy'),
     path('portal/klub_edytuj/<int:klub_id>/', edytuj, name='edytuj'),
     path('portal/klub_usun/<int:klub_id>/', usun, name='usun'),
-    path('portal/klub_nowszy_klub/', nowszy_klub, name='nowszy_klub'),
-    path('portal/klub_nowy2/', nowy2, name='nowy2'),
+    path('portal/klub_nowy_wszystko/', nowy_wszystko, name='nowy_wszystko'),
     path('portal/extra_wszystkie/',extra_wszystkie, name='extra_wszystkie'),
     path('portal/extra_szczegoly/<int:extra_id>/',extra_szczegoly, name='extra_szczegoly'),
     path('portal/extra_nowy/', extra_nowy, name='extra_nowy'),
