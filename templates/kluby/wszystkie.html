@@ -5,26 +5,34 @@
 {% block strona %}
 
 
-<a href="{% url 'nowy' %}">Nowy klub</a>
+<a class="btn btn-primary" role="button" href="{% url 'nowy' %}">Nowy klub</a>
 
-<a href="{% url 'nowy2' %}">Nowy klub z wszystkimi informacjami</a>
+<a class="btn btn-primary" role="button" href="{% url 'nowy2' %}">Nowy klub z wszystkimi informacjami</a>
 
 {% if kluby %}
-    <ul>
-    {% for klub in kluby %}
-        <li><a href="/kluby/portal/klub_szczegoly/{{ klub.id }}/">{{ klub.nazwa }}</a></li>
-        <a href="/kluby/portal/klub_edytuj/{{ klub.id }}/" >Edytuj klub</a>
-        <a href="/kluby/portal/klub_usun/{{ klub.id }}/" >Usuń klub</a>
-    {% endfor %}
-    </ul>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Nazwa</th>
+          <th scope="col">Edytuj</th>
+          <th scope="col">Usuń</th>
+        </tr>
+      </thead>
+        <tbody>
+        {% for klub in kluby %}
+        <tr>
+            <td><a href="/kluby/portal/klub_szczegoly/{{ klub.id }}/">{{ klub.nazwa }}</a></td>
+            <td><a href="/kluby/portal/klub_edytuj/{{ klub.id }}/" >Edytuj klub</a></td>
+            <td><a href="/kluby/portal/klub_usun/{{ klub.id }}/" >Usuń klub</a></td>
+        </tr>
+      {% endfor %}
+        </tbody>
+    </table>
 {% else %}
     <p>Brak klubów w bazie danych.</p>
 {% endif %}
 
-<a href="{% url 'portal' %}">Cofnij</a>
-
-
-
+<a class="btn btn-secondary" role="button" href="{% url 'portal' %}">Cofnij</a>
 
 
 {% endblock %}

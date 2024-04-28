@@ -8,9 +8,9 @@
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form|bootstrap}}
-    <button type="submit">Wyślij dane</button>
+    <button class="btn btn-primary" type="submit">Wyślij dane</button>
 </form>
 
-<a href="{% url 'extra_wszystkie' %}">Cofnij</a>
+<a class="btn btn-secondary" role="button" href="{% url 'extra_wszystkie' %}">Cofnij</a>
 
 {% endblock %}

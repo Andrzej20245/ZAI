@@ -4,20 +4,31 @@
 
 {% block strona %}
 
-<a href="{% url 'sezon_nowy' %}">Nowy sezon</a>
+<a  class="btn btn-primary" role="button" href="{% url 'sezon_nowy' %}">Nowy sezon</a>
 
 {% if sezony %}
-    <ul>
-    {% for sezon in sezony %}
-        <li><a href="/kluby/portal/sezon_szczegoly/{{ sezon.id }}/">{{ sezon.klub }}: {{ sezon.start }} - {{ sezon.koniec }}</a></li>
-        <a href="/kluby/portal/sezon_edytuj/{{ sezon.id }}/" >Edytuj sezon</a>
-        <a href="/kluby/portal/sezon_usun/{{ sezon.id }}/" >Usuń sezon</a>
-    {% endfor %}
-    </ul>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Sezon</th>
+          <th scope="col">Edytuj</th>
+          <th scope="col">Usuń</th>
+        </tr>
+      </thead>
+        <tbody>
+         {% for sezon in sezony %}
+        <tr>
+            <td><a href="/kluby/portal/sezon_szczegoly/{{ sezon.id }}/">{{ sezon.klub }}: {{ sezon.start }} - {{ sezon.koniec }}</a></td>
+            <td><a href="/kluby/portal/sezon_edytuj/{{ sezon.id }}/" >Edytuj sezon</a></td>
+            <td><a href="/kluby/portal/sezon_usun/{{ sezon.id }}/" >Usuń sezon</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% else %}
     <p>Brak sezonów.</p>
 {% endif %}
 
-<a href="{% url 'portal' %}">Cofnij</a>
+<a class="btn btn-secondary" role="button" href="{% url 'portal' %}">Cofnij</a>
 
 {% endblock %}

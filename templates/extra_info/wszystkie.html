@@ -4,21 +4,32 @@
 
 {% block strona %}
 
-
-<a href="{% url 'extra_nowy' %}">Nowe dodatkowe informacje</a>
+<a class="btn btn-primary" role="button" href="{% url 'extra_nowy' %}">Nowe dodatkowe informacje</a>
 
 {% if extra %}
-    <ul>
-    {% for info in extra %}
-        <li><a href="/kluby/portal/extra_szczegoly/{{ info.id }}/">{{ info.klub }}</a></li>
-        <a href="/kluby/portal/extra_edytuj/{{ info.id }}/" >Edytuj extra informacje</a>
-        <a href="/kluby/portal/extra_usun/{{ info.id }}/" >Usuń extra informacje</a>
-    {% endfor %}
-    </ul>
+  <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Extra informacje klubu</th>
+          <th scope="col">Edytuj</th>
+          <th scope="col">Usuń</th>
+        </tr>
+      </thead>
+        <tbody>
+         {% for info in extra %}
+        <tr>
+            <td><a href="/kluby/portal/extra_szczegoly/{{ info.id }}/">{{ info.klub }}</a></td>
+            <td><a href="/kluby/portal/extra_edytuj/{{ info.id }}/" >Edytuj extra informacje</a></td>
+            <td><a href="/kluby/portal/extra_usun/{{ info.id }}/" >Usuń extra informacje</a></td>
+        </tr>
+      {% endfor %}
+        </tbody>
+    </table>
+
 {% else %}
     <p>Brak extra informacji.</p>
 {% endif %}
 
-<a href="{% url 'portal' %}">Cofnij</a>
+<a class="btn btn-secondary" role="button" href="{% url 'portal' %}">Cofnij</a>
 
 {% endblock %}
