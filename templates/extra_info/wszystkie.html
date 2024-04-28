@@ -1,0 +1,24 @@
+{% extends 'main/portal.html' %}
+
+{% block tytul %} Lista wszystkich dodatkowych informacji w bazie {% endblock %}
+
+{% block strona %}
+
+
+<a href="{% url 'extra_nowy' %}">Nowe dodatkowe informacje</a>
+
+{% if extra %}
+    <ul>
+    {% for info in extra %}
+        <li><a href="/kluby/portal/extra_szczegoly/{{ info.id }}/">{{ info.klub }}</a></li>
+        <a href="/kluby/portal/extra_edytuj/{{ info.id }}/" >Edytuj extra informacje</a>
+        <a href="/kluby/portal/extra_usun/{{ info.id }}/" >Usuń extra informacje</a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Brak extra informacji.</p>
+{% endif %}
+
+<a href="{% url 'portal' %}">Cofnij</a>
+
+{% endblock %}

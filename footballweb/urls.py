@@ -23,6 +23,6 @@ from kluby.views import logout_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('kluby/', include('kluby.urls')),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('logout/', logout_view, name='logout')
+    path('kluby/portal/login/', auth_views.LoginView.as_view(), name='login'),
+    path('kluby/portal/logout/', logout_view, name='logout')
 ]

@@ -1,0 +1,20 @@
+{% extends 'main/portal.html' %}
+
+{% block tytul %} Szczegółowy widok zawodników {% endblock %}
+
+{% block strona %}
+
+
+<h1>{{ zawodnicy.imie }} {{ zawodnicy.nazwisko }}</h1>
+
+<ul>
+    <li> wiek: {{ zawodnicy.wiek }}</li>
+     kluby:
+    {% for klub in zawodnicy.kluby.all %}
+    <li> {{ klub }}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'zawodnik_wszystkie' %}">Cofnij</a>
+
+{% endblock %}

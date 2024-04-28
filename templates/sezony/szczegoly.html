@@ -1,0 +1,13 @@
+{% extends 'main/portal.html' %}
+
+{% block tytul %} Szczegółowy widok sezonów {% endblock %}
+
+{% block strona %}
+<h1>{{ sezony.klub }}</h1>
+<ul>
+    <li>{{ sezony.start  }} - {{ sezony.koniec }}: {{ sezony.opinia }}</li>
+</ul>
+
+<a href="{% url 'sezon_wszystkie' %}">Cofnij</a>
+
+{% endblock %}

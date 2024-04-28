@@ -1,0 +1,14 @@
+{% extends 'main/portal.html' %}
+
+{% block tytul %} Usuwanie wskazanych dodatkowych informacji z bazy {% endblock %}
+
+{% block strona %}
+<h1>Czy na pewno chcesz usunąć z bazy dodatkową informację {{ extra.kluby }} ?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Usuń dodatkową informacje</button>
+</form>
+
+<a href="{% url 'extra_wszystkie' %}">Cofnij</a>
+
+{% endblock %}

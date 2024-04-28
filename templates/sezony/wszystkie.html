@@ -1,0 +1,23 @@
+{% extends 'main/portal.html' %}
+
+{% block tytul %} Lista wszystkich sezonów w bazie {% endblock %}
+
+{% block strona %}
+
+<a href="{% url 'sezon_nowy' %}">Nowy sezon</a>
+
+{% if sezony %}
+    <ul>
+    {% for sezon in sezony %}
+        <li><a href="/kluby/portal/sezon_szczegoly/{{ sezon.id }}/">{{ sezon.klub }}: {{ sezon.start }} - {{ sezon.koniec }}</a></li>
+        <a href="/kluby/portal/sezon_edytuj/{{ sezon.id }}/" >Edytuj sezon</a>
+        <a href="/kluby/portal/sezon_usun/{{ sezon.id }}/" >Usuń sezon</a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Brak sezonów.</p>
+{% endif %}
+
+<a href="{% url 'portal' %}">Cofnij</a>
+
+{% endblock %}

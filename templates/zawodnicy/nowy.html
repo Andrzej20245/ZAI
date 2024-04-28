@@ -1,6 +1,6 @@
 {% extends 'main/portal.html' %}
 
-{% block tytul %} Edycja i dodawanie klubów {% endblock %}
+{% block tytul %} Edycja i dodawanie zawodników {% endblock %}
 
 {% block strona %}
 {% load bootstrap %}
@@ -11,6 +11,6 @@
     <button type="submit">Wyślij dane</button>
 </form>
 
-<a href="{% url 'wszystkie' %}">Cofnij</a>
+<a href="{% url 'zawodnik_wszystkie' %}">Cofnij</a>
 
 {% endblock %}

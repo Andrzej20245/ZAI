@@ -1,28 +1,30 @@
-{% extends 'kluby/glowny.html' %}
+{% extends 'main/portal.html' %}
 
-{% block tytul %} Lista wszystkich filmów w bazie {% endblock %}
+{% block tytul %} Lista wszystkich klubów w bazie {% endblock %}
 
 {% block strona %}
 
-{% if user.is_authenticated %}
-     Witaj {{ user.username }}<br>
-    <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-    <a href="{% url 'login' %}">Login</a>
-    {% endif %}
-<hr>
 
-<a href="{% url 'nowy' %}">Nowy film</a>
+<a href="{% url 'nowy' %}">Nowy klub</a>
+
+<a href="{% url 'nowy2' %}">Nowy klub z wszystkimi informacjami</a>
 
 {% if kluby %}
     <ul>
     {% for klub in kluby %}
-        <li><a href="/kluby/szczegoly/{{ klub.id }}/">{{ klub.nazwa }}</a></li>
-        <a href="/kluby/edytuj/{{ klub.id }}/" >Edytuj klub</a>
-        <a href="/kluby/usun/{{ klub.id }}/" >Usuń klub</a>
+        <li><a href="/kluby/portal/klub_szczegoly/{{ klub.id }}/">{{ klub.nazwa }}</a></li>
+        <a href="/kluby/portal/klub_edytuj/{{ klub.id }}/" >Edytuj klub</a>
+        <a href="/kluby/portal/klub_usun/{{ klub.id }}/" >Usuń klub</a>
     {% endfor %}
     </ul>
 {% else %}
     <p>Brak klubów w bazie danych.</p>
 {% endif %}
+
+<a href="{% url 'portal' %}">Cofnij</a>
+
+
+
+
+
 {% endblock %}

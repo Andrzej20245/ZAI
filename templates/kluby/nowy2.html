@@ -3,14 +3,17 @@
 {% block tytul %} Edycja i dodawanie klubów {% endblock %}
 
 {% block strona %}
-{% load bootstrap %}
 
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form|bootstrap}}
+    {{ form }}
+    {{ form_einfo }}
+    {{ form_sezon }}
+    {{ form_zawodnik }}
     <button type="submit">Wyślij dane</button>
 </form>
 
-<a href="{% url 'wszystkie' %}">Cofnij</a>
+
+<a href="{% url 'portal' %}">Cofnij</a>
 
 {% endblock %}

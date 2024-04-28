@@ -1,0 +1,14 @@
+{% extends 'main/portal.html' %}
+
+{% block tytul %} Usuwanie wskazanych zawodników z bazy {% endblock %}
+
+{% block strona %}
+<h1>Czy na pewno chcesz usunąć z bazy zawodnika {{ zawodnik.imie }} {{ zawodnik.nazwisko }} ?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Usuń zawodnika</button>
+</form>
+
+<a href="{% url 'zawodnik_wszystkie' %}">Cofnij</a>
+
+{% endblock %}

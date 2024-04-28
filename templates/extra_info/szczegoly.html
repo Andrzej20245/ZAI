@@ -1,0 +1,13 @@
+{% extends 'main/portal.html' %}
+
+{% block tytul %} Szczegółowy widok dodatkowych informacji klubu {% endblock %}
+
+{% block strona %}
+<h1>{{ extra.klub }}</h1>
+<ul>
+    <li>{{ extra }}</li>
+</ul>
+
+<a href="{% url 'extra_wszystkie' %}">Cofnij</a>
+
+{% endblock %}

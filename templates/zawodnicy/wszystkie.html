@@ -1,0 +1,24 @@
+{% extends 'main/portal.html' %}
+
+{% block tytul %} Lista wszystkich zawodników w bazie {% endblock %}
+
+{% block strona %}
+
+
+<a href="{% url 'zawodnik_nowy' %}">Nowy zawodnik</a>
+
+{% if zawodnicy %}
+    <ul>
+    {% for zawodnik in zawodnicy %}
+        <li><a href="/kluby/portal/zawodnik_szczegoly/{{ zawodnik.id }}/">{{ zawodnik.imie }} {{ zawodnik.nazwisko }}</a></li>
+        <a href="/kluby/portal/zawodnik_edytuj/{{ zawodnik.id }}/" >Edytuj zawodnik</a>
+        <a href="/kluby/portal/zawodnik_usun/{{ zawodnik.id }}/" >Usuń zawodnika</a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Brak zawodników.</p>
+{% endif %}
+
+<a href="{% url 'portal' %}">Cofnij</a>
+
+{% endblock %}
