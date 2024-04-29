@@ -7,7 +7,7 @@
 
 <h1>{{ zawodnicy.imie }} {{ zawodnicy.nazwisko }}</h1>
 
-<ul>
+<ul id="szczegoly_zawodnicy">
     <li> wiek: {{ zawodnicy.wiek }}</li>
      kluby:
     {% for klub in zawodnicy.kluby.all %}

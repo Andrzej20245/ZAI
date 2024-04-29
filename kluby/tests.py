@@ -3,7 +3,7 @@ from django.urls import reverse, resolve
 from django.contrib.auth.models import User
 from .views import wszystkie, szczegoly, nowy, usun, edytuj
 from .models import Klub, ExtraInfo
-class FilmyTests(TestCase):
+class KlubyTests(TestCase):
     def setUp(self):
         User.objects.create_superuser(username='admin', password='admin')
 

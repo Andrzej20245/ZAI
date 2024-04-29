@@ -1,0 +1,6 @@
+h1 {
+    color: green !important;
+ }
+#szczegoly_extra,#szczegoly_kluby,#szczegoly_sezony,#szczegoly_zawodnicy{
+    font-size:18px;
+}

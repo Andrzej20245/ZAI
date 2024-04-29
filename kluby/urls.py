@@ -20,8 +20,7 @@ from kluby.views import portal, wszystkie, szczegoly, nowy, edytuj, usun,nowy_ws
     extra_wszystkie, extra_szczegoly, extra_nowy, extra_edytuj,extra_usun, \
     sezon_wszystkie, sezon_szczegoly, sezon_nowy,sezon_edytuj,sezon_usun, \
     zawodnik_wszystkie, zawodnik_szczegoly, zawodnik_nowy, zawodnik_edytuj, zawodnik_usun
-from django.conf import settings
-from django.conf.urls.static import static
+
 
 
 urlpatterns = [
@@ -47,4 +46,4 @@ urlpatterns = [
     path('portal/zawodnik_nowy/', zawodnik_nowy, name='zawodnik_nowy'),
     path('portal/zawodnik_edytuj/<int:zawodnik_id>/', zawodnik_edytuj, name='zawodnik_edytuj'),
     path('portal/zawodnik_usun/<int:zawodnik_id>/', zawodnik_usun, name='zawodnik_usun'),
-] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
+]
