@@ -52,7 +52,7 @@ def usun(request, klub_id):
 
 
 @login_required
-@permission_required("kluby.add_film")
+@permission_required("kluby.add_klub")
 def nowy_wszystko(request):
     form = KlubForm(request.POST or None)
     form_einfo = ExtraInfoFormWszystko(request.POST or None)
