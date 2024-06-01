@@ -1,4 +1,5 @@
 Komendy do uruchomienia: pip install django-bootstrap-form
-Ewentualnie:
+Dodatkowo:
 python -m venv env 
+Oraz:
 env\Scripts\activate
